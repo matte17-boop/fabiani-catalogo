@@ -187,7 +187,16 @@ function loadData() {
 
 function parseCSV(csv) {
   var rows = csv.trim().split("\n");
-  var headers = rows[0].split(",").map(function(h) { return h.trim().replace(/^"|"$/g,"").toLowerCase(); });
+  var headers = rows[0].split(",").map(function(h) { 
+    return h.trim().replace(/^"|"$/g,"").toLowerCase()
+      .replace(/\s*\*\s*/g,"").replace(/\s*\/\s*.*/g,"")
+      .replace(/pietra.*gemma/i,"pietra")
+      .replace(/sku.*codice/i,"sku")
+      .replace(/prezzo barrato/i,"prezzoold")
+      .replace(/url immagine/i,"imgurl")
+      .replace(/url prodotto/i,"url")
+      .trim();
+  });
   return rows.slice(1).map(function(row) {
     var vals = [], cur = "", inQ = false;
     for (var i = 0; i < row.length; i++) {
