@@ -23,7 +23,8 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes scaleIn{from{opacity:0;transform:scale(0.93)}to{opacity:1;transform:scale(1)}}
-@keyframes lineGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* LOGIN */
 #loginScreen{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--white);padding:2rem;position:relative;overflow:hidden;}
 #loginScreen::before{content:'';position:absolute;bottom:0;left:0;right:0;height:38%;background:var(--rosa);z-index:0;}
 .login-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;}
@@ -37,24 +38,49 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 .login-card button{width:100%;background:var(--black);color:var(--white);border:none;padding:16px;font-family:'TenorSans',serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;cursor:pointer;transition:background 0.25s;}
 .login-card button:hover{background:var(--rosa-accent);}
 .login-error{font-size:11px;color:#b03a2e;margin-top:14px;display:none;letter-spacing:0.06em;}
+
+/* CATALOGO */
 #catalogScreen{display:none;min-height:100vh;animation:fadeIn 0.4s ease both;}
 .top-bar{background:var(--black);color:rgba(255,255,255,0.5);padding:9px 48px;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;}
 .top-bar-dot{width:3px;height:3px;border-radius:50%;background:var(--rosa-dark);display:inline-block;margin-right:8px;}
-.cat-header{background:var(--white);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.cat-header{background:var(--white);border-bottom:1px solid var(--border);padding:0 48px;height:72px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
 .header-logo{width:90px;height:auto;}
 .header-logo path{fill:var(--black);}
 .header-right{font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-mid);}
-.filters-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:stretch;height:50px;overflow-x:auto;}
-.filter-btn{font-family:'TenorSans',serif;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-dark);background:transparent;border:none;border-bottom:2px solid transparent;padding:0 18px;cursor:pointer;white-space:nowrap;transition:all 0.15s;height:100%;}
-.filter-btn:hover{color:var(--black);}
-.filter-btn.active{color:var(--black);border-bottom-color:var(--rosa-dark);}
-.search-wrap{margin-left:auto;display:flex;align-items:center;flex-shrink:0;padding-left:24px;}
+
+/* NAVIGATION 3 LEVELS */
+.nav-wrap{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:72px;z-index:190;}
+
+/* LEVEL 1 - MACRO */
+.nav-macro{display:flex;align-items:stretch;padding:0 48px;height:48px;border-bottom:1px solid var(--border);overflow-x:auto;}
+.macro-btn{font-family:'TenorSans',serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray-dark);background:transparent;border:none;border-bottom:2px solid transparent;padding:0 20px;cursor:pointer;white-space:nowrap;transition:all 0.15s;height:100%;}
+.macro-btn:hover{color:var(--black);}
+.macro-btn.active{color:var(--black);border-bottom-color:var(--black);font-weight:400;}
+
+/* LEVEL 2 - MICRO */
+.nav-micro{display:none;align-items:stretch;padding:0 48px;height:42px;border-bottom:1px solid var(--border);background:var(--gray-light);overflow-x:auto;}
+.nav-micro.visible{display:flex;}
+.micro-btn{font-family:'TenorSans',serif;font-size:8px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray-dark);background:transparent;border:none;border-bottom:2px solid transparent;padding:0 16px;cursor:pointer;white-space:nowrap;transition:all 0.15s;height:100%;}
+.micro-btn:hover{color:var(--black);}
+.micro-btn.active{color:var(--black);border-bottom-color:var(--rosa-dark);}
+
+/* LEVEL 3 - TIPO */
+.nav-tipo{display:none;align-items:center;padding:0 48px;height:38px;background:var(--rosa);overflow-x:auto;gap:4px;}
+.nav-tipo.visible{display:flex;}
+.tipo-btn{font-family:'TenorSans',serif;font-size:7px;letter-spacing:0.16em;text-transform:uppercase;color:var(--rosa-accent);background:transparent;border:1px solid var(--rosa-mid);border-radius:100px;padding:4px 12px;cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.tipo-btn:hover{background:var(--rosa-mid);color:var(--black);}
+.tipo-btn.active{background:var(--black);color:var(--white);border-color:var(--black);}
+
+/* SEARCH + COUNT */
+.search-count-bar{padding:10px 48px;border-bottom:1px solid var(--border);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-dark);display:flex;align-items:center;gap:16px;background:var(--white);}
+.count-dot{width:3px;height:3px;border-radius:50%;background:var(--rosa-dark);display:inline-block;}
+.search-wrap{margin-left:auto;}
 .search-wrap input{border:none;border-bottom:1px solid var(--gray-mid);padding:4px 0;font-family:'TenorSans',serif;font-size:10px;letter-spacing:0.1em;background:transparent;color:var(--black);width:180px;outline:none;transition:border-color 0.2s;}
 .search-wrap input:focus{border-bottom-color:var(--rosa-dark);}
 .search-wrap input::placeholder{color:var(--gray-mid);}
-.count-bar{padding:10px 48px;border-bottom:1px solid var(--border);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray-dark);display:flex;align-items:center;gap:10px;background:var(--gray-light);}
-.count-dot{width:3px;height:3px;border-radius:50%;background:var(--rosa-dark);display:inline-block;}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));border-left:1px solid var(--border);border-top:1px solid var(--border);margin:36px 48px;}
+
+/* GRID */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));border-left:1px solid var(--border);border-top:1px solid var(--border);margin:32px 48px;}
 .product-card{background:var(--white);border-right:1px solid var(--border);border-bottom:1px solid var(--border);cursor:pointer;position:relative;transition:all 0.25s;}
 .product-card:hover{box-shadow:0 8px 32px rgba(180,120,100,0.12);z-index:1;}
 .product-img-wrap{aspect-ratio:1/1;background:var(--rosa);overflow:hidden;display:flex;align-items:center;justify-content:center;}
@@ -71,6 +97,8 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 .product-price{font-size:15px;color:var(--black);}
 .product-badge{position:absolute;top:0;left:0;background:var(--black);color:var(--white);font-size:7px;letter-spacing:0.14em;padding:5px 10px;text-transform:uppercase;}
 .loading-state{grid-column:1/-1;padding:100px;text-align:center;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray-mid);line-height:3;}
+
+/* LIGHTBOX */
 .overlay{position:fixed;inset:0;background:rgba(12,12,12,0.78);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem;}
 .overlay.open{display:flex;animation:fadeIn 0.2s ease both;}
 .lb-box{background:var(--white);max-width:640px;width:100%;display:flex;position:relative;max-height:88vh;overflow:hidden;animation:scaleIn 0.28s cubic-bezier(0.16,1,0.3,1) both;}
@@ -90,159 +118,322 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 .lb-link:hover{color:var(--rosa-accent);border-color:var(--rosa-accent);}
 .lb-close{position:absolute;top:14px;right:14px;background:none;border:1px solid var(--border);width:28px;height:28px;cursor:pointer;font-size:12px;color:var(--gray-dark);display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
 .lb-close:hover{background:var(--black);color:var(--white);border-color:var(--black);}
-.cat-footer{background:var(--black);color:rgba(255,255,255,0.35);padding:20px 48px;margin-top:36px;display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;}
+.cat-footer{background:var(--black);color:rgba(255,255,255,0.35);padding:20px 48px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;}
 .footer-logo{width:60px;height:auto;}
 .footer-logo path{fill:rgba(255,255,255,0.25);}
-@media(max-width:640px){.top-bar,.cat-header,.filters-wrap,.count-bar,.cat-footer{padding-left:20px;padding-right:20px;}.products-grid{margin:16px 20px;grid-template-columns:repeat(2,1fr);}.header-right{display:none;}.lb-box{flex-direction:column;}.lb-img{width:100%;min-width:unset;height:200px;}}
+@media(max-width:640px){
+  .top-bar,.cat-header,.nav-macro,.nav-micro,.nav-tipo,.search-count-bar,.cat-footer{padding-left:20px;padding-right:20px;}
+  .products-grid{margin:16px 20px;grid-template-columns:repeat(2,1fr);}
+  .header-right{display:none;}
+  .lb-box{flex-direction:column;}
+  .lb-img{width:100%;min-width:unset;height:200px;}
+}
 </style>
 </head>
 <body>
 <div id="loginScreen"><div class="login-inner"><div class="login-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1552.33 796.69"><path d="M1389.64,79.13c-5.83,1.52-11.58,2.88-17.2,4.01-.17.04-.33.08-.5.11-35.08,7.4-70.57,6.45-103.92,1.06-5.7-.8-11.27-1.68-16.57-2.71-14.6-2.83-30.09-6.54-45.85-10.99-14.93-4.59-26.07-8.11-32.96-10.4-3.28-1.16-8.1-2.8-14.46-4.92-7.53-2.5-9.83-3.23-10.8-3.51-16.67-5.84-31.9-11.01-45.26-15.35-13.23-4.3-29.07-8.97-47.09-13.87-18.04-4.9-34.93-8.89-50.22-11.85-15.32-2.96-32.62-5.53-51.4-7.65C934.49.93,916.11-.08,898.77,0c-17.32.11-36.04,1.35-55.62,3.68-19.67,2.34-39.35,6.07-58.46,11.07-41.78,10.86-84.13,29.83-125.73,56.29-29.05,17.6-56.61,38.43-81.93,61.9-23.8,22.07-45.81,46.29-65.28,71.81-.47.58-1.88,2.34-3.77,4.98l-.14.21c-3.67,5.16-8.84,13.2-12.66,22.33-.14.32-.11.66-.2.99,29.56-34.29,59.33-62.91,88.77-86.82,26.96-21.9,53.64-39.87,79.61-54.48,114.8-64.6,215.69-64.69,265.83-58.94,9.74,1.49,20.05,3.29,30.78,5.4.91.18,1.91.41,2.83.6,18.91,3.88,40.16,9.01,63.36,15.35,24.59,6.72,47.48,13.13,68.04,19.05,20.81,5.99,42.86,11.91,65.56,17.6,23,5.76,47.23,10.44,72.03,13.92,24.91,3.5,49.87,5.32,74.21,5.43h2.56c7.47,0,14.59.02,22.27-.55,1.76-.02,4.35-.21,7.23-.43l4.11-.3c36.29-2.41,74.45-14.12,113.33-34.75,12.23-6.28,24.45-13.48,36.25-21.34,14.49-9.45,29.33-20.03,44.09-31.46l.06-.05c.42-.32,1.37-1.04,2.8-2.17.03-.02.05-.05.07-.07l.73-.57c3.54-2.84,8.34-6.93,12.82-11.36-40.74,26.46-95.74,55.08-162.69,71.82Z"/><path d="M178.42,796.26C-23.35,803.92.91,706.86.91,706.86c0,0-16.6,74.07,145.58,66.41,162.19-7.66,290.21-105.23,290.21-105.23,12.18-8.88,24.72-18.8,37.32-29.49,12.65-10.75,24.2-20.95,34.33-30.33,10.11-9.37,21.69-20.66,34.39-33.53,12.76-12.93,23.37-23.86,31.53-32.49,8.23-8.7,18.92-20.09,32.08-34.2,24.84-26.69,49.96-53.35,75.17-79.86l15.99-16.8c18.39-19.26,36.82-38.36,55.24-57.37,88.9-88.98,263.21-249.01,356.65-237.58-63.78,7.23-141.34,73.93-193.51,126.52-2.15,2.13-4.57,4.56-7.34,7.37-5.05,5.13-8.66,8.76-10.84,10.92-2.14,2.12-6.04,6.09-11.7,11.89-5.65,5.8-9.24,9.49-10.74,11.08-16.38,16.69-33.59,34.71-51.25,53.67l-2.63,2.92c-3.84,4.18-9.48,10.25-16.97,18.27-7.46,7.99-13.07,14.04-16.84,18.14-3.78,4.11-15.04,16.38-33.78,36.81-.76.83-1.46,1.59-2.2,2.4l-16.93,18.43c-8.72,9.48-15.27,16.57-19.59,21.22-7.05,7.57-17.97,19.19-32.77,34.87-14.82,15.7-28.37,29.66-40.27,41.5-11.89,11.83-24.18,23.75-36.5,35.42-14.04,13.32-47.91,49.81-86.79,81.58,0,0-126.43,125.15-340.34,146.86Z"/><path d="M906.03,331.59c-7.78-.39-19.49,4.23-35.12,13.85-15.61,9.62-31.3,22.28-47.07,38-11.02,2.18-19.38,3.79-21.53,4.08-5.62.76-11.72,1.29-18.05,1.71-.04.03-.11.07-.11.07l-73.84,12.65c-.05.06-.09.11-.14.16,0,0-.91.09-2.49.29h0s0,0,0,0c-17.58,2.16-126.83,17.92-209.51,84.39-.12.12-.26.24-.43.34,32.1-19.17,66.75-29.9,98.6-40.97,11.44-3.98,22.9-7.42,34.38-10.39,20.49-5.29,41.06-8.99,61.7-11.05l66.59-11.18c10.51-1.45,18.99-2.73,25.48-3.83l-.05.06c2.34-.4,4.66-.85,6.97-1.31,1.46-.27,2.91-.54,4.36-.83l-.6.18c-19.55,30.96-9.31,54.12.71,74.14-5.23-17.34-3.19-34.99,2.42-48.25,5.28-12.48,13.92-21.78,26.09-33.18l9-2.4c22.58-7.71,41.67-17.44,57.26-29.21,15.59-11.77,23.56-21.2,23.92-28.32.13-2.56-.59-4.66-2.16-6.31-1.57-1.64-3.7-2.54-6.39-2.67Z"/></svg></div><div class="login-eyebrow">Gioiellerie &middot; Catalogo Riservato</div><div class="login-card"><label>Codice di accesso</label><input type="password" id="pwdInput" placeholder="&middot; &middot; &middot; &middot; &middot; &middot;" /><button onclick="doLogin()">Accedi al catalogo</button><div class="login-error" id="loginError">Codice non valido</div></div></div></div>
-<div id="catalogScreen"><div class="top-bar"><span><span class="top-bar-dot"></span>Documento riservato agli operatori</span><span id="footerDate"></span></div><header class="cat-header"><div class="header-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1552.33 796.69"><path d="M1389.64,79.13c-5.83,1.52-11.58,2.88-17.2,4.01-.17.04-.33.08-.5.11-35.08,7.4-70.57,6.45-103.92,1.06-5.7-.8-11.27-1.68-16.57-2.71-14.6-2.83-30.09-6.54-45.85-10.99-14.93-4.59-26.07-8.11-32.96-10.4-3.28-1.16-8.1-2.8-14.46-4.92-7.53-2.5-9.83-3.23-10.8-3.51-16.67-5.84-31.9-11.01-45.26-15.35-13.23-4.3-29.07-8.97-47.09-13.87-18.04-4.9-34.93-8.89-50.22-11.85-15.32-2.96-32.62-5.53-51.4-7.65C934.49.93,916.11-.08,898.77,0c-17.32.11-36.04,1.35-55.62,3.68-19.67,2.34-39.35,6.07-58.46,11.07-41.78,10.86-84.13,29.83-125.73,56.29-29.05,17.6-56.61,38.43-81.93,61.9-23.8,22.07-45.81,46.29-65.28,71.81-.47.58-1.88,2.34-3.77,4.98l-.14.21c-3.67,5.16-8.84,13.2-12.66,22.33-.14.32-.11.66-.2.99,29.56-34.29,59.33-62.91,88.77-86.82,26.96-21.9,53.64-39.87,79.61-54.48,114.8-64.6,215.69-64.69,265.83-58.94,9.74,1.49,20.05,3.29,30.78,5.4.91.18,1.91.41,2.83.6,18.91,3.88,40.16,9.01,63.36,15.35,24.59,6.72,47.48,13.13,68.04,19.05,20.81,5.99,42.86,11.91,65.56,17.6,23,5.76,47.23,10.44,72.03,13.92,24.91,3.5,49.87,5.32,74.21,5.43h2.56c7.47,0,14.59.02,22.27-.55,1.76-.02,4.35-.21,7.23-.43l4.11-.3c36.29-2.41,74.45-14.12,113.33-34.75,12.23-6.28,24.45-13.48,36.25-21.34,14.49-9.45,29.33-20.03,44.09-31.46l.06-.05c.42-.32,1.37-1.04,2.8-2.17.03-.02.05-.05.07-.07l.73-.57c3.54-2.84,8.34-6.93,12.82-11.36-40.74,26.46-95.74,55.08-162.69,71.82Z"/><path d="M178.42,796.26C-23.35,803.92.91,706.86.91,706.86c0,0-16.6,74.07,145.58,66.41,162.19-7.66,290.21-105.23,290.21-105.23,12.18-8.88,24.72-18.8,37.32-29.49,12.65-10.75,24.2-20.95,34.33-30.33,10.11-9.37,21.69-20.66,34.39-33.53,12.76-12.93,23.37-23.86,31.53-32.49,8.23-8.7,18.92-20.09,32.08-34.2,24.84-26.69,49.96-53.35,75.17-79.86l15.99-16.8c18.39-19.26,36.82-38.36,55.24-57.37,88.9-88.98,263.21-249.01,356.65-237.58-63.78,7.23-141.34,73.93-193.51,126.52-2.15,2.13-4.57,4.56-7.34,7.37-5.05,5.13-8.66,8.76-10.84,10.92-2.14,2.12-6.04,6.09-11.7,11.89-5.65,5.8-9.24,9.49-10.74,11.08-16.38,16.69-33.59,34.71-51.25,53.67l-2.63,2.92c-3.84,4.18-9.48,10.25-16.97,18.27-7.46,7.99-13.07,14.04-16.84,18.14-3.78,4.11-15.04,16.38-33.78,36.81-.76.83-1.46,1.59-2.2,2.4l-16.93,18.43c-8.72,9.48-15.27,16.57-19.59,21.22-7.05,7.57-17.97,19.19-32.77,34.87-14.82,15.7-28.37,29.66-40.27,41.5-11.89,11.83-24.18,23.75-36.5,35.42-14.04,13.32-47.91,49.81-86.79,81.58,0,0-126.43,125.15-340.34,146.86Z"/><path d="M906.03,331.59c-7.78-.39-19.49,4.23-35.12,13.85-15.61,9.62-31.3,22.28-47.07,38-11.02,2.18-19.38,3.79-21.53,4.08-5.62.76-11.72,1.29-18.05,1.71-.04.03-.11.07-.11.07l-73.84,12.65c-.05.06-.09.11-.14.16,0,0-.91.09-2.49.29h0s0,0,0,0c-17.58,2.16-126.83,17.92-209.51,84.39-.12.12-.26.24-.43.34,32.1-19.17,66.75-29.9,98.6-40.97,11.44-3.98,22.9-7.42,34.38-10.39,20.49-5.29,41.06-8.99,61.7-11.05l66.59-11.18c10.51-1.45,18.99-2.73,25.48-3.83l-.05.06c2.34-.4,4.66-.85,6.97-1.31,1.46-.27,2.91-.54,4.36-.83l-.6.18c-19.55,30.96-9.31,54.12.71,74.14-5.23-17.34-3.19-34.99,2.42-48.25,5.28-12.48,13.92-21.78,26.09-33.18l9-2.4c22.58-7.71,41.67-17.44,57.26-29.21,15.59-11.77,23.56-21.2,23.92-28.32.13-2.56-.59-4.66-2.16-6.31-1.57-1.64-3.7-2.54-6.39-2.67Z"/></svg></div><div class="header-right">Catalogo B2B</div></header><div class="filters-wrap"><button class="filter-btn active" onclick="setFilter('tutti',this)">Tutti</button><button class="filter-btn" onclick="setFilter('Anelli',this)">Anelli</button><button class="filter-btn" onclick="setFilter('Collane',this)">Collane</button><button class="filter-btn" onclick="setFilter('Bracciali',this)">Bracciali</button><button class="filter-btn" onclick="setFilter('Orecchini',this)">Orecchini</button><button class="filter-btn" onclick="setFilter('Ciondoli',this)">Ciondoli</button><button class="filter-btn" onclick="setFilter('Orologi',this)">Orologi</button><button class="filter-btn" onclick="setFilter('Accessori',this)">Accessori</button><div class="search-wrap"><input type="text" placeholder="Cerca..." oninput="doSearch(this.value)" /></div></div><div class="count-bar"><span class="count-dot"></span><span id="countLabel">Caricamento...</span></div><div class="products-grid" id="grid"><div class="loading-state">Caricamento prodotti...</div></div><footer class="cat-footer"><div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1552.33 796.69"><path d="M1389.64,79.13c-5.83,1.52-11.58,2.88-17.2,4.01-.17.04-.33.08-.5.11-35.08,7.4-70.57,6.45-103.92,1.06-5.7-.8-11.27-1.68-16.57-2.71-14.6-2.83-30.09-6.54-45.85-10.99-14.93-4.59-26.07-8.11-32.96-10.4-3.28-1.16-8.1-2.8-14.46-4.92-7.53-2.5-9.83-3.23-10.8-3.51-16.67-5.84-31.9-11.01-45.26-15.35-13.23-4.3-29.07-8.97-47.09-13.87-18.04-4.9-34.93-8.89-50.22-11.85-15.32-2.96-32.62-5.53-51.4-7.65C934.49.93,916.11-.08,898.77,0c-17.32.11-36.04,1.35-55.62,3.68-19.67,2.34-39.35,6.07-58.46,11.07-41.78,10.86-84.13,29.83-125.73,56.29-29.05,17.6-56.61,38.43-81.93,61.9-23.8,22.07-45.81,46.29-65.28,71.81-.47.58-1.88,2.34-3.77,4.98l-.14.21c-3.67,5.16-8.84,13.2-12.66,22.33-.14.32-.11.66-.2.99,29.56-34.29,59.33-62.91,88.77-86.82,26.96-21.9,53.64-39.87,79.61-54.48,114.8-64.6,215.69-64.69,265.83-58.94,9.74,1.49,20.05,3.29,30.78,5.4.91.18,1.91.41,2.83.6,18.91,3.88,40.16,9.01,63.36,15.35,24.59,6.72,47.48,13.13,68.04,19.05,20.81,5.99,42.86,11.91,65.56,17.6,23,5.76,47.23,10.44,72.03,13.92,24.91,3.5,49.87,5.32,74.21,5.43h2.56c7.47,0,14.59.02,22.27-.55,1.76-.02,4.35-.21,7.23-.43l4.11-.3c36.29-2.41,74.45-14.12,113.33-34.75,12.23-6.28,24.45-13.48,36.25-21.34,14.49-9.45,29.33-20.03,44.09-31.46l.06-.05c.42-.32,1.37-1.04,2.8-2.17.03-.02.05-.05.07-.07l.73-.57c3.54-2.84,8.34-6.93,12.82-11.36-40.74,26.46-95.74,55.08-162.69,71.82Z"/><path d="M178.42,796.26C-23.35,803.92.91,706.86.91,706.86c0,0-16.6,74.07,145.58,66.41,162.19-7.66,290.21-105.23,290.21-105.23,12.18-8.88,24.72-18.8,37.32-29.49,12.65-10.75,24.2-20.95,34.33-30.33,10.11-9.37,21.69-20.66,34.39-33.53,12.76-12.93,23.37-23.86,31.53-32.49,8.23-8.7,18.92-20.09,32.08-34.2,24.84-26.69,49.96-53.35,75.17-79.86l15.99-16.8c18.39-19.26,36.82-38.36,55.24-57.37,88.9-88.98,263.21-249.01,356.65-237.58-63.78,7.23-141.34,73.93-193.51,126.52-2.15,2.13-4.57,4.56-7.34,7.37-5.05,5.13-8.66,8.76-10.84,10.92-2.14,2.12-6.04,6.09-11.7,11.89-5.65,5.8-9.24,9.49-10.74,11.08-16.38,16.69-33.59,34.71-51.25,53.67l-2.63,2.92c-3.84,4.18-9.48,10.25-16.97,18.27-7.46,7.99-13.07,14.04-16.84,18.14-3.78,4.11-15.04,16.38-33.78,36.81-.76.83-1.46,1.59-2.2,2.4l-16.93,18.43c-8.72,9.48-15.27,16.57-19.59,21.22-7.05,7.57-17.97,19.19-32.77,34.87-14.82,15.7-28.37,29.66-40.27,41.5-11.89,11.83-24.18,23.75-36.5,35.42-14.04,13.32-47.91,49.81-86.79,81.58,0,0-126.43,125.15-340.34,146.86Z"/><path d="M906.03,331.59c-7.78-.39-19.49,4.23-35.12,13.85-15.61,9.62-31.3,22.28-47.07,38-11.02,2.18-19.38,3.79-21.53,4.08-5.62.76-11.72,1.29-18.05,1.71-.04.03-.11.07-.11.07l-73.84,12.65c-.05.06-.09.11-.14.16,0,0-.91.09-2.49.29h0s0,0,0,0c-17.58,2.16-126.83,17.92-209.51,84.39-.12.12-.26.24-.43.34,32.1-19.17,66.75-29.9,98.6-40.97,11.44-3.98,22.9-7.42,34.38-10.39,20.49-5.29,41.06-8.99,61.7-11.05l66.59-11.18c10.51-1.45,18.99-2.73,25.48-3.83l-.05.06c2.34-.4,4.66-.85,6.97-1.31,1.46-.27,2.91-.54,4.36-.83l-.6.18c-19.55,30.96-9.31,54.12.71,74.14-5.23-17.34-3.19-34.99,2.42-48.25,5.28-12.48,13.92-21.78,26.09-33.18l9-2.4c22.58-7.71,41.67-17.44,57.26-29.21,15.59-11.77,23.56-21.2,23.92-28.32.13-2.56-.59-4.66-2.16-6.31-1.57-1.64-3.7-2.54-6.39-2.67Z"/></svg></div><span>Fabiani Gioiellerie &middot; fabianigioiellerie.com</span></footer></div>
+<div id="catalogScreen"><div class="top-bar"><span><span class="top-bar-dot"></span>Documento riservato agli operatori</span><span id="footerDate"></span></div><header class="cat-header"><div class="header-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1552.33 796.69"><path d="M1389.64,79.13c-5.83,1.52-11.58,2.88-17.2,4.01-.17.04-.33.08-.5.11-35.08,7.4-70.57,6.45-103.92,1.06-5.7-.8-11.27-1.68-16.57-2.71-14.6-2.83-30.09-6.54-45.85-10.99-14.93-4.59-26.07-8.11-32.96-10.4-3.28-1.16-8.1-2.8-14.46-4.92-7.53-2.5-9.83-3.23-10.8-3.51-16.67-5.84-31.9-11.01-45.26-15.35-13.23-4.3-29.07-8.97-47.09-13.87-18.04-4.9-34.93-8.89-50.22-11.85-15.32-2.96-32.62-5.53-51.4-7.65C934.49.93,916.11-.08,898.77,0c-17.32.11-36.04,1.35-55.62,3.68-19.67,2.34-39.35,6.07-58.46,11.07-41.78,10.86-84.13,29.83-125.73,56.29-29.05,17.6-56.61,38.43-81.93,61.9-23.8,22.07-45.81,46.29-65.28,71.81-.47.58-1.88,2.34-3.77,4.98l-.14.21c-3.67,5.16-8.84,13.2-12.66,22.33-.14.32-.11.66-.2.99,29.56-34.29,59.33-62.91,88.77-86.82,26.96-21.9,53.64-39.87,79.61-54.48,114.8-64.6,215.69-64.69,265.83-58.94,9.74,1.49,20.05,3.29,30.78,5.4.91.18,1.91.41,2.83.6,18.91,3.88,40.16,9.01,63.36,15.35,24.59,6.72,47.48,13.13,68.04,19.05,20.81,5.99,42.86,11.91,65.56,17.6,23,5.76,47.23,10.44,72.03,13.92,24.91,3.5,49.87,5.32,74.21,5.43h2.56c7.47,0,14.59.02,22.27-.55,1.76-.02,4.35-.21,7.23-.43l4.11-.3c36.29-2.41,74.45-14.12,113.33-34.75,12.23-6.28,24.45-13.48,36.25-21.34,14.49-9.45,29.33-20.03,44.09-31.46l.06-.05c.42-.32,1.37-1.04,2.8-2.17.03-.02.05-.05.07-.07l.73-.57c3.54-2.84,8.34-6.93,12.82-11.36-40.74,26.46-95.74,55.08-162.69,71.82Z"/><path d="M178.42,796.26C-23.35,803.92.91,706.86.91,706.86c0,0-16.6,74.07,145.58,66.41,162.19-7.66,290.21-105.23,290.21-105.23,12.18-8.88,24.72-18.8,37.32-29.49,12.65-10.75,24.2-20.95,34.33-30.33,10.11-9.37,21.69-20.66,34.39-33.53,12.76-12.93,23.37-23.86,31.53-32.49,8.23-8.7,18.92-20.09,32.08-34.2,24.84-26.69,49.96-53.35,75.17-79.86l15.99-16.8c18.39-19.26,36.82-38.36,55.24-57.37,88.9-88.98,263.21-249.01,356.65-237.58-63.78,7.23-141.34,73.93-193.51,126.52-2.15,2.13-4.57,4.56-7.34,7.37-5.05,5.13-8.66,8.76-10.84,10.92-2.14,2.12-6.04,6.09-11.7,11.89-5.65,5.8-9.24,9.49-10.74,11.08-16.38,16.69-33.59,34.71-51.25,53.67l-2.63,2.92c-3.84,4.18-9.48,10.25-16.97,18.27-7.46,7.99-13.07,14.04-16.84,18.14-3.78,4.11-15.04,16.38-33.78,36.81-.76.83-1.46,1.59-2.2,2.4l-16.93,18.43c-8.72,9.48-15.27,16.57-19.59,21.22-7.05,7.57-17.97,19.19-32.77,34.87-14.82,15.7-28.37,29.66-40.27,41.5-11.89,11.83-24.18,23.75-36.5,35.42-14.04,13.32-47.91,49.81-86.79,81.58,0,0-126.43,125.15-340.34,146.86Z"/><path d="M906.03,331.59c-7.78-.39-19.49,4.23-35.12,13.85-15.61,9.62-31.3,22.28-47.07,38-11.02,2.18-19.38,3.79-21.53,4.08-5.62.76-11.72,1.29-18.05,1.71-.04.03-.11.07-.11.07l-73.84,12.65c-.05.06-.09.11-.14.16,0,0-.91.09-2.49.29h0s0,0,0,0c-17.58,2.16-126.83,17.92-209.51,84.39-.12.12-.26.24-.43.34,32.1-19.17,66.75-29.9,98.6-40.97,11.44-3.98,22.9-7.42,34.38-10.39,20.49-5.29,41.06-8.99,61.7-11.05l66.59-11.18c10.51-1.45,18.99-2.73,25.48-3.83l-.05.06c2.34-.4,4.66-.85,6.97-1.31,1.46-.27,2.91-.54,4.36-.83l-.6.18c-19.55,30.96-9.31,54.12.71,74.14-5.23-17.34-3.19-34.99,2.42-48.25,5.28-12.48,13.92-21.78,26.09-33.18l9-2.4c22.58-7.71,41.67-17.44,57.26-29.21,15.59-11.77,23.56-21.2,23.92-28.32.13-2.56-.59-4.66-2.16-6.31-1.57-1.64-3.7-2.54-6.39-2.67Z"/></svg></div><div class="header-right">Catalogo B2B</div></header><nav class="nav-wrap"><div class="nav-macro" id="navMacro"></div><div class="nav-micro" id="navMicro"></div><div class="nav-tipo" id="navTipo"></div></nav><div class="search-count-bar"><span class="count-dot"></span><span id="countLabel">Caricamento...</span><div class="search-wrap"><input type="text" placeholder="Cerca..." oninput="doSearch(this.value)" /></div></div><div class="products-grid" id="grid"><div class="loading-state">Caricamento prodotti...</div></div><footer class="cat-footer"><div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1552.33 796.69"><path d="M1389.64,79.13c-5.83,1.52-11.58,2.88-17.2,4.01-.17.04-.33.08-.5.11-35.08,7.4-70.57,6.45-103.92,1.06-5.7-.8-11.27-1.68-16.57-2.71-14.6-2.83-30.09-6.54-45.85-10.99-14.93-4.59-26.07-8.11-32.96-10.4-3.28-1.16-8.1-2.8-14.46-4.92-7.53-2.5-9.83-3.23-10.8-3.51-16.67-5.84-31.9-11.01-45.26-15.35-13.23-4.3-29.07-8.97-47.09-13.87-18.04-4.9-34.93-8.89-50.22-11.85-15.32-2.96-32.62-5.53-51.4-7.65C934.49.93,916.11-.08,898.77,0c-17.32.11-36.04,1.35-55.62,3.68-19.67,2.34-39.35,6.07-58.46,11.07-41.78,10.86-84.13,29.83-125.73,56.29-29.05,17.6-56.61,38.43-81.93,61.9-23.8,22.07-45.81,46.29-65.28,71.81-.47.58-1.88,2.34-3.77,4.98l-.14.21c-3.67,5.16-8.84,13.2-12.66,22.33-.14.32-.11.66-.2.99,29.56-34.29,59.33-62.91,88.77-86.82,26.96-21.9,53.64-39.87,79.61-54.48,114.8-64.6,215.69-64.69,265.83-58.94,9.74,1.49,20.05,3.29,30.78,5.4.91.18,1.91.41,2.83.6,18.91,3.88,40.16,9.01,63.36,15.35,24.59,6.72,47.48,13.13,68.04,19.05,20.81,5.99,42.86,11.91,65.56,17.6,23,5.76,47.23,10.44,72.03,13.92,24.91,3.5,49.87,5.32,74.21,5.43h2.56c7.47,0,14.59.02,22.27-.55,1.76-.02,4.35-.21,7.23-.43l4.11-.3c36.29-2.41,74.45-14.12,113.33-34.75,12.23-6.28,24.45-13.48,36.25-21.34,14.49-9.45,29.33-20.03,44.09-31.46l.06-.05c.42-.32,1.37-1.04,2.8-2.17.03-.02.05-.05.07-.07l.73-.57c3.54-2.84,8.34-6.93,12.82-11.36-40.74,26.46-95.74,55.08-162.69,71.82Z"/><path d="M178.42,796.26C-23.35,803.92.91,706.86.91,706.86c0,0-16.6,74.07,145.58,66.41,162.19-7.66,290.21-105.23,290.21-105.23,12.18-8.88,24.72-18.8,37.32-29.49,12.65-10.75,24.2-20.95,34.33-30.33,10.11-9.37,21.69-20.66,34.39-33.53,12.76-12.93,23.37-23.86,31.53-32.49,8.23-8.7,18.92-20.09,32.08-34.2,24.84-26.69,49.96-53.35,75.17-79.86l15.99-16.8c18.39-19.26,36.82-38.36,55.24-57.37,88.9-88.98,263.21-249.01,356.65-237.58-63.78,7.23-141.34,73.93-193.51,126.52-2.15,2.13-4.57,4.56-7.34,7.37-5.05,5.13-8.66,8.76-10.84,10.92-2.14,2.12-6.04,6.09-11.7,11.89-5.65,5.8-9.24,9.49-10.74,11.08-16.38,16.69-33.59,34.71-51.25,53.67l-2.63,2.92c-3.84,4.18-9.48,10.25-16.97,18.27-7.46,7.99-13.07,14.04-16.84,18.14-3.78,4.11-15.04,16.38-33.78,36.81-.76.83-1.46,1.59-2.2,2.4l-16.93,18.43c-8.72,9.48-15.27,16.57-19.59,21.22-7.05,7.57-17.97,19.19-32.77,34.87-14.82,15.7-28.37,29.66-40.27,41.5-11.89,11.83-24.18,23.75-36.5,35.42-14.04,13.32-47.91,49.81-86.79,81.58,0,0-126.43,125.15-340.34,146.86Z"/><path d="M906.03,331.59c-7.78-.39-19.49,4.23-35.12,13.85-15.61,9.62-31.3,22.28-47.07,38-11.02,2.18-19.38,3.79-21.53,4.08-5.62.76-11.72,1.29-18.05,1.71-.04.03-.11.07-.11.07l-73.84,12.65c-.05.06-.09.11-.14.16,0,0-.91.09-2.49.29h0s0,0,0,0c-17.58,2.16-126.83,17.92-209.51,84.39-.12.12-.26.24-.43.34,32.1-19.17,66.75-29.9,98.6-40.97,11.44-3.98,22.9-7.42,34.38-10.39,20.49-5.29,41.06-8.99,61.7-11.05l66.59-11.18c10.51-1.45,18.99-2.73,25.48-3.83l-.05.06c2.34-.4,4.66-.85,6.97-1.31,1.46-.27,2.91-.54,4.36-.83l-.6.18c-19.55,30.96-9.31,54.12.71,74.14-5.23-17.34-3.19-34.99,2.42-48.25,5.28-12.48,13.92-21.78,26.09-33.18l9-2.4c22.58-7.71,41.67-17.44,57.26-29.21,15.59-11.77,23.56-21.2,23.92-28.32.13-2.56-.59-4.66-2.16-6.31-1.57-1.64-3.7-2.54-6.39-2.67Z"/></svg></div><span>Fabiani Gioiellerie &middot; fabianigioiellerie.com</span></footer></div>
 <div class="overlay" id="overlay" onclick="overlayClick(event)"><div class="lb-box"><div class="lb-img" id="lbImg">&#128142;</div><div class="lb-content"><div class="lb-brand" id="lbBrand"></div><div class="lb-spec" id="lbSpec"></div><div class="lb-pietra" id="lbPietra"></div><div class="lb-price" id="lbPrice"></div><div class="lb-sep"></div><div id="lbRows"></div><a class="lb-link" id="lbLink" href="#" target="_blank">Vedi sul sito &#8594;</a></div><button class="lb-close" onclick="closeLb()">&#x2715;</button></div></div>
 <script>
 
 var PASSWORD = "fabiani2024";
 var SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT6kzkq8AlsUg2BaZgOLN-Vwqa5mnNlA61F9tJBABQEFcwpKBTngW1TWvYbP159wc0XH_6KCTs4B3Fg/pub?gid=1500418604&single=true&output=csv";
+
+// Struttura menu 3 livelli
+var MENU = {
+  "Oro": {
+    "Anelli": ["Tutti","Solitario","Trilogy","Riviera","Fedi e Fascette","Margherita","Fascia","Chevalier","Contrarie","Fantasia"],
+    "Bracciali": ["Tutti","Rigido","Tennis","Maglia","Fantasia","Perla"],
+    "Collane": ["Tutti","Maglia","Punto Luce","Collane con Ciondolo","Tennis","Margherita","Trilogy","Perla"],
+    "Orecchini": ["Tutti","Cerchi","Punto Luce","Trilogy","Margherita","Pendenti","Perla","Lobo"]
+  },
+  "Argento": {
+    "Anelli": ["Tutti","Solitario","Trilogy","Riviera","Fedi e Fascette","Margherita","Fascia","Chevalier","Contrarie","Fantasia"],
+    "Bracciali": ["Tutti","Rigido","Tennis","Maglia","Fantasia","Perla"],
+    "Collane": ["Tutti","Maglia","Punto Luce","Collane con Ciondolo","Tennis","Margherita","Trilogy","Perla"],
+    "Orecchini": ["Tutti","Cerchi","Punto Luce","Trilogy","Margherita","Pendenti","Perla","Lobo"]
+  },
+  "Acciaio": null,
+  "Gioielleria": {
+    "Anelli": ["Tutti"],
+    "Bracciali": ["Tutti"],
+    "Collane": ["Tutti"],
+    "Orecchini": ["Tutti"]
+  }
+};
+
 var allProducts = [];
-var currentFilter = "tutti";
-var currentSearch = "";
+var curMacro = "";
+var curMicro = "";
+var curTipo = "";
+var curSearch = "";
 
 function doLogin() {
   var val = document.getElementById("pwdInput").value.trim();
   if (val === PASSWORD) {
     document.getElementById("loginScreen").style.display = "none";
     document.getElementById("catalogScreen").style.display = "block";
-    document.getElementById("footerDate").textContent = new Date().toLocaleDateString("it-IT", {day:"2-digit", month:"long", year:"numeric"});
+    document.getElementById("footerDate").textContent = new Date().toLocaleDateString("it-IT",{day:"2-digit",month:"long",year:"numeric"});
     loadData();
   } else {
     document.getElementById("loginError").style.display = "block";
   }
 }
-
-document.getElementById("pwdInput").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") doLogin();
-});
+document.getElementById("pwdInput").addEventListener("keydown", function(e){ if(e.key==="Enter") doLogin(); });
 
 function normalizeHeader(h) {
-  h = h.trim().replace(/^"|"$/g, "").toLowerCase();
+  h = h.trim().replace(/^"|"$/g,"").toLowerCase();
   if (h.indexOf("pietra") >= 0) return "pietra";
   if (h.indexOf("sku") >= 0) return "sku";
   if (h.indexOf("barrato") >= 0) return "prezzoold";
   if (h.indexOf("immagine") >= 0) return "imgurl";
-  if (h.indexOf("prodotto") >= 0) return "url";
+  if (h.indexOf("prodotto") >= 0 && h.indexOf("url") >= 0) return "url";
+  if (h.indexOf("url") >= 0 && h.indexOf("immagine") < 0) return "url";
   if (h.indexOf("materiale") >= 0) return "materiale";
-  if (h.indexOf("categoria") >= 0) return "categoria";
+  if (h.indexOf("macro") >= 0) return "macro";
+  if (h.indexOf("micro") >= 0) return "micro";
+  if (h.indexOf("tipo") >= 0) return "tipo";
+  if (h.indexOf("categoria") >= 0) return "micro";
   if (h.indexOf("prezzo") >= 0) return "prezzo";
   if (h.indexOf("sconto") >= 0) return "sconto";
   if (h.indexOf("brand") >= 0) return "brand";
-  return h.replace(/[^a-z]/g, "");
+  return h.replace(/[^a-z]/g,"");
 }
 
 function parseCSV(csv) {
   var rows = csv.trim().split("\n");
   var headers = rows[0].split(",").map(normalizeHeader);
   return rows.slice(1).map(function(row) {
-    var vals = [], cur = "", inQ = false;
-    for (var i = 0; i < row.length; i++) {
-      var ch = row[i];
-      if (ch === '"') { inQ = !inQ; }
-      else if (ch === ',' && !inQ) { vals.push(cur.trim()); cur = ""; }
-      else { cur += ch; }
+    var vals=[], cur="", inQ=false;
+    for (var i=0; i<row.length; i++) {
+      var ch=row[i];
+      if (ch==='"'){inQ=!inQ;}
+      else if (ch===',' && !inQ){vals.push(cur.trim());cur="";}
+      else{cur+=ch;}
     }
     vals.push(cur.trim());
-    var obj = {};
-    headers.forEach(function(h, i) { obj[h] = (vals[i] || "").replace(/^"|"$/g, ""); });
+    var obj={};
+    headers.forEach(function(h,i){obj[h]=(vals[i]||"").replace(/^"|"$/g,"");});
     return obj;
-  }).filter(function(p) { return p.brand && p.materiale; });
+  }).filter(function(p){return p.brand && p.materiale;});
 }
 
 function loadData() {
   fetch(SHEET_CSV_URL)
-    .then(function(r) { return r.text(); })
-    .then(function(csv) { allProducts = parseCSV(csv); render(); })
-    .catch(function() {
-      document.getElementById("grid").innerHTML = '<div class="loading-state" style="color:#b03a2e">Errore caricamento.<br><span style="font-size:8px;opacity:.7">Verificare URL Google Sheet.</span></div>';
+    .then(function(r){return r.text();})
+    .then(function(csv){
+      allProducts = parseCSV(csv);
+      buildMacroNav();
+      render();
+    })
+    .catch(function(){
+      document.getElementById("grid").innerHTML='<div class="loading-state" style="color:#b03a2e">Errore caricamento.</div>';
     });
 }
 
-function setFilter(cat, btn) {
-  currentFilter = cat;
-  var btns = document.querySelectorAll(".filter-btn");
-  for (var i = 0; i < btns.length; i++) btns[i].classList.remove("active");
+function buildMacroNav() {
+  var nav = document.getElementById("navMacro");
+  nav.innerHTML = "";
+  // Tutti button
+  var allBtn = document.createElement("button");
+  allBtn.className = "macro-btn active";
+  allBtn.textContent = "Tutti";
+  allBtn.onclick = function(){ setMacro("", this); };
+  nav.appendChild(allBtn);
+
+  var macros = Object.keys(MENU);
+  for (var i=0; i<macros.length; i++) {
+    (function(m){
+      var btn = document.createElement("button");
+      btn.className = "macro-btn";
+      btn.textContent = m;
+      btn.onclick = function(){ setMacro(m, this); };
+      nav.appendChild(btn);
+    })(macros[i]);
+  }
+}
+
+function setMacro(macro, btn) {
+  curMacro = macro;
+  curMicro = "";
+  curTipo = "";
+  var btns = document.querySelectorAll(".macro-btn");
+  for (var i=0; i<btns.length; i++) btns[i].classList.remove("active");
+  btn.classList.add("active");
+
+  var microWrap = document.getElementById("navMicro");
+  var tipoWrap = document.getElementById("navTipo");
+
+  if (!macro || !MENU[macro]) {
+    microWrap.classList.remove("visible");
+    tipoWrap.classList.remove("visible");
+  } else if (MENU[macro] === null) {
+    // Acciaio - no submenu
+    microWrap.classList.remove("visible");
+    tipoWrap.classList.remove("visible");
+  } else {
+    buildMicroNav(macro);
+    microWrap.classList.add("visible");
+    tipoWrap.classList.remove("visible");
+  }
+  render();
+}
+
+function buildMicroNav(macro) {
+  var nav = document.getElementById("navMicro");
+  nav.innerHTML = "";
+  var micros = Object.keys(MENU[macro]);
+  // Tutti
+  var allBtn = document.createElement("button");
+  allBtn.className = "micro-btn active";
+  allBtn.textContent = "Tutti";
+  allBtn.onclick = function(){ setMicro("", this, macro); };
+  nav.appendChild(allBtn);
+
+  for (var i=0; i<micros.length; i++) {
+    (function(m){
+      var btn = document.createElement("button");
+      btn.className = "micro-btn";
+      btn.textContent = m;
+      btn.onclick = function(){ setMicro(m, this, macro); };
+      nav.appendChild(btn);
+    })(micros[i]);
+  }
+}
+
+function setMicro(micro, btn, macro) {
+  curMicro = micro;
+  curTipo = "";
+  var btns = document.querySelectorAll(".micro-btn");
+  for (var i=0; i<btns.length; i++) btns[i].classList.remove("active");
+  btn.classList.add("active");
+
+  var tipoWrap = document.getElementById("navTipo");
+  if (micro && MENU[macro] && MENU[macro][micro] && MENU[macro][micro].length > 1) {
+    buildTipoNav(macro, micro);
+    tipoWrap.classList.add("visible");
+  } else {
+    tipoWrap.classList.remove("visible");
+  }
+  render();
+}
+
+function buildTipoNav(macro, micro) {
+  var nav = document.getElementById("navTipo");
+  nav.innerHTML = "";
+  var tipos = MENU[macro][micro];
+  for (var i=0; i<tipos.length; i++) {
+    (function(t){
+      var btn = document.createElement("button");
+      btn.className = "tipo-btn" + (t==="Tutti"?" active":"");
+      btn.textContent = t;
+      btn.onclick = function(){ setTipo(t==="Tutti"?"":t, this); };
+      nav.appendChild(btn);
+    })(tipos[i]);
+  }
+}
+
+function setTipo(tipo, btn) {
+  curTipo = tipo;
+  var btns = document.querySelectorAll(".tipo-btn");
+  for (var i=0; i<btns.length; i++) btns[i].classList.remove("active");
   btn.classList.add("active");
   render();
 }
 
-function doSearch(val) { currentSearch = val.toLowerCase(); render(); }
+function doSearch(val) { curSearch = val.toLowerCase(); render(); }
+
+function matchTipo(pTipo, filter) {
+  if (!filter) return true;
+  var t = (pTipo||"").toLowerCase();
+  var f = filter.toLowerCase();
+  // Partial match per gestire varianti
+  if (f === "contrarie") return t.indexOf("contrari") >= 0;
+  if (f === "fedi e fascette") return t.indexOf("fedi") >= 0 || t.indexOf("fascett") >= 0;
+  if (f === "collane con ciondolo") return t.indexOf("ciondolo") >= 0;
+  if (f === "punto luce") return t.indexOf("punto luce") >= 0;
+  if (f === "perla") return t.indexOf("perla") >= 0 || t.indexOf("perle") >= 0;
+  return t.indexOf(f) >= 0;
+}
 
 function render() {
   var f = allProducts.filter(function(p) {
-    var cat = p.categoria || "";
-    var mc = currentFilter === "tutti" || cat === currentFilter;
-    var q = currentSearch;
-    var mq = !q || (p.materiale||"").toLowerCase().indexOf(q) >= 0 || (p.brand||"").toLowerCase().indexOf(q) >= 0 || (p.sku||"").toLowerCase().indexOf(q) >= 0 || (p.pietra||"").toLowerCase().indexOf(q) >= 0;
-    return mc && mq;
+    if (curMacro && (p.macro||"") !== curMacro) return false;
+    if (curMicro && (p.micro||"") !== curMicro) return false;
+    if (curTipo && !matchTipo(p.tipo, curTipo)) return false;
+    if (curSearch) {
+      var q = curSearch;
+      var match = (p.materiale||"").toLowerCase().indexOf(q)>=0 ||
+                  (p.brand||"").toLowerCase().indexOf(q)>=0 ||
+                  (p.sku||"").toLowerCase().indexOf(q)>=0 ||
+                  (p.pietra||"").toLowerCase().indexOf(q)>=0;
+      if (!match) return false;
+    }
+    return true;
   });
-  document.getElementById("countLabel").textContent = f.length + " prodott" + (f.length === 1 ? "o" : "i");
+
+  document.getElementById("countLabel").textContent = f.length + " prodott" + (f.length===1?"o":"i");
+
   if (!f.length) {
     document.getElementById("grid").innerHTML = '<div class="loading-state">Nessun prodotto trovato</div>';
     return;
   }
+
   var html = "";
-  for (var i = 0; i < f.length; i++) {
+  for (var i=0; i<f.length; i++) {
     var p = f[i];
     var img = p.imgurl || "";
     var prezzo = p.prezzo || "";
     var prezzoOld = p.prezzoold || "";
     var sconto = p.sconto || "";
-    var imgTag = img ? '<img src="' + img + '" alt="" loading="lazy" onerror="this.style.display=\'none\'"/>' : '<div class="product-img-placeholder">&#128142;</div>';
-    html += '<div class="product-card" data-i="' + i + '">';
-    if (sconto) html += '<div class="product-badge">' + sconto + '</div>';
-    html += '<div class="product-img-wrap">' + imgTag + '</div>';
+    var imgTag = img
+      ? '<img src="'+img+'" alt="" loading="lazy" onerror="this.style.display=\'none\'" />'
+      : '<div class="product-img-placeholder">&#128142;</div>';
+    html += '<div class="product-card" data-i="'+i+'">';
+    if (sconto) html += '<div class="product-badge">'+sconto+'</div>';
+    html += '<div class="product-img-wrap">'+imgTag+'</div>';
     html += '<div class="product-body"><div class="product-spec-wrap">';
-    html += '<div class="product-brand">' + (p.brand || "") + '</div>';
-    html += '<div class="product-mat">' + (p.materiale || "") + '</div>';
-    if (p.pietra) html += '<div class="product-pietra">' + p.pietra + '</div>';
+    html += '<div class="product-brand">'+(p.brand||"")+'</div>';
+    html += '<div class="product-mat">'+(p.materiale||"")+'</div>';
+    if (p.pietra) html += '<div class="product-pietra">'+p.pietra+'</div>';
     html += '</div><div class="product-price-wrap">';
-    if (prezzoOld) html += '<span class="product-price-old">&#8364;' + prezzoOld + '</span>';
-    if (prezzo) html += '<span class="product-price">&#8364;' + prezzo + '</span>';
+    if (prezzoOld) html += '<span class="product-price-old">&#8364;'+prezzoOld+'</span>';
+    if (prezzo) html += '<span class="product-price">&#8364;'+prezzo+'</span>';
     html += '</div></div></div>';
   }
   document.getElementById("grid").innerHTML = html;
+
   var cards = document.querySelectorAll(".product-card");
-  for (var j = 0; j < cards.length; j++) {
-    (function(idx) {
-      cards[idx].addEventListener("click", function() { openLb(f[idx]); });
-    })(j);
+  for (var j=0; j<cards.length; j++) {
+    (function(idx){ cards[idx].addEventListener("click",function(){openLb(f[idx]);}); })(j);
   }
 }
 
 function openLb(p) {
   var img = p.imgurl || "";
-  document.getElementById("lbBrand").textContent = p.brand || "";
-  document.getElementById("lbSpec").textContent = p.materiale || "";
-  document.getElementById("lbPietra").textContent = p.pietra || "";
-  document.getElementById("lbPietra").style.display = p.pietra ? "block" : "none";
-  var priceHtml = p.prezzoold ? '<span class="lb-price-old">&#8364;' + p.prezzoold + '</span>' : "";
-  priceHtml += "&#8364;" + (p.prezzo || "");
+  document.getElementById("lbBrand").textContent = p.brand||"";
+  document.getElementById("lbSpec").textContent = p.materiale||"";
+  document.getElementById("lbPietra").textContent = p.pietra||"";
+  document.getElementById("lbPietra").style.display = p.pietra?"block":"none";
+  var priceHtml = p.prezzoold?'<span class="lb-price-old">&#8364;'+p.prezzoold+'</span>':"";
+  priceHtml += "&#8364;"+(p.prezzo||"");
   document.getElementById("lbPrice").innerHTML = priceHtml;
-  document.getElementById("lbImg").innerHTML = img ? '<img src="' + img + '" alt=""/>' : "&#128142;";
-  var rows = [["Categoria", p.categoria || ""], ["Materiale", p.materiale || ""]];
-  if (p.pietra) rows.push(["Pietra", p.pietra]);
-  if (p.sku) rows.push(["SKU", p.sku]);
-  if (p.sconto) rows.push(["Sconto", p.sconto]);
-  document.getElementById("lbRows").innerHTML = rows.map(function(r) {
-    return '<div class="lb-row"><span class="lb-row-k">' + r[0] + '</span><span class="lb-row-v">' + r[1] + '</span></div>';
+  document.getElementById("lbImg").innerHTML = img?'<img src="'+img+'" alt=""/>':'&#128142;';
+  var rows=[["Macro",p.macro||""],["Categoria",p.micro||""],["Tipologia",p.tipo||""],["Materiale",p.materiale||""]];
+  if(p.pietra) rows.push(["Pietra",p.pietra]);
+  if(p.sku) rows.push(["SKU",p.sku]);
+  if(p.sconto) rows.push(["Sconto",p.sconto]);
+  document.getElementById("lbRows").innerHTML = rows.map(function(r){
+    if(!r[1]) return "";
+    return '<div class="lb-row"><span class="lb-row-k">'+r[0]+'</span><span class="lb-row-v">'+r[1]+'</span></div>';
   }).join("");
-  document.getElementById("lbLink").href = p.url || "#";
-  document.getElementById("lbLink").style.display = p.url ? "inline-block" : "none";
+  document.getElementById("lbLink").href = p.url||"#";
+  document.getElementById("lbLink").style.display = p.url?"inline-block":"none";
   document.getElementById("overlay").classList.add("open");
 }
-
-function closeLb() { document.getElementById("overlay").classList.remove("open"); }
-function overlayClick(e) { if (e.target.id === "overlay") closeLb(); }
-document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeLb(); });
+function closeLb(){ document.getElementById("overlay").classList.remove("open"); }
+function overlayClick(e){ if(e.target.id==="overlay") closeLb(); }
+document.addEventListener("keydown",function(e){ if(e.key==="Escape") closeLb(); });
 
 </script>
 </body>
