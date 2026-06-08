@@ -177,7 +177,7 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 
 /* ── MOBILE ── */
 @media(max-width:768px){
-  :root{--nav-h:108px;}
+  :root{--nav-h:158px;}
   .top-bar,.cat-header,.toolbar,.cat-footer{padding-left:16px;padding-right:16px;}
   .nav-desktop{display:none;}
   .hamburger{display:none;}
@@ -194,9 +194,8 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
   .search-input{width:120px;}
 }
 @media(max-width:400px){
-  :root{--nav-h:100px;}
   .top-bar{display:none;}
-  :root{--nav-h:86px;}
+  :root{--nav-h:124px;}
 }
 </style>
 </head>
@@ -279,12 +278,19 @@ document.getElementById("pwdInput").addEventListener("keydown",function(e){if(e.
 
 function updateNavHeight(){
   var nav=document.getElementById("stickyNav");
-  if(nav){
-    var h=nav.offsetHeight;
-    document.getElementById("contentArea").style.paddingTop=h+"px";
+  var area=document.getElementById("contentArea");
+  if(nav && area){
+    var h=nav.getBoundingClientRect().height;
+    area.style.paddingTop=h+"px";
   }
 }
 window.addEventListener("resize",updateNavHeight);
+// Run multiple times to catch layout shifts
+document.addEventListener("DOMContentLoaded",function(){
+  updateNavHeight();
+  setTimeout(updateNavHeight,100);
+  setTimeout(updateNavHeight,300);
+});
 
 function normalizeHeader(h){
   h=h.trim().replace(/^"|"$/g,"").toLowerCase();
@@ -610,6 +616,7 @@ function render(){
   document.querySelectorAll(".product-card").forEach(function(card,i){
     (function(idx){card.addEventListener("click",function(){openLb(f[idx]);});})(i);
   });
+  updateNavHeight();
 }
 
 /* ── LIGHTBOX ── */
