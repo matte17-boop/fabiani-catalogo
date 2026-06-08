@@ -544,11 +544,20 @@ function render(){
   if(!f.length){document.getElementById("grid").innerHTML='<div class="loading-state">Nessun prodotto trovato</div>';document.getElementById("grid").className="products-grid cols-"+curCols;return;}
   var html="";
   for(var i=0;i<f.length;i++){
-    var p=f[i],img=p.imgurl||"",prezzo=p.prezzoold&&p.prezzoold!==""?p.prezzoold:(p.prezzo||"");
-    var imgTag=img?'<img src="'+img+'" alt="" loading="lazy" onerror="this.style.display=\'none\'"/>':"<div class="product-img-placeholder">&#128142;</div>";
-    html+='<div class="product-card" data-i="'+i+'"><div class="product-img-wrap">'+imgTag+"</div><div class="product-body"><div class="product-brand">"+(p.brand||"")+"</div><div class="product-mat">"+(p.materiale||"")+"</div>"+(p.pietra?"<div class="product-pietra">"+p.pietra+"</div>":"")+(prezzo?"<div class="product-price">&#8364;"+prezzo+"</div>":"")+"</div></div>";
+    var p=f[i];
+    var img=p.imgurl||"";
+    var prezzo=p.prezzoold&&p.prezzoold!==""?p.prezzoold:(p.prezzo||"");
+    var imgHtml=img?"<img src="+JSON.stringify(img)+" alt='' loading='lazy' />":"<div class='product-img-placeholder'>&#128142;</div>";
+    html+="<div class='product-card' data-i='"+i+"'>";
+    html+="<div class='product-img-wrap'>"+imgHtml+"</div>";
+    html+="<div class='product-body'>";
+    html+="<div class='product-brand'>"+(p.brand||"")+"</div>";
+    html+="<div class='product-mat'>"+(p.materiale||"")+"</div>";
+    if(p.pietra) html+="<div class='product-pietra'>"+p.pietra+"</div>";
+    if(prezzo) html+="<div class='product-price'>&#8364;"+prezzo+"</div>";
+    html+="</div></div>";
   }
-  document.getElementById("grid").innerHTML=html;
+    document.getElementById("grid").innerHTML=html;
   document.getElementById("grid").className="products-grid cols-"+curCols;
   document.querySelectorAll(".product-card").forEach(function(card,i){(function(idx){card.addEventListener("click",function(){openLb(f[idx]);});})(i);});
   setNavPadding();
