@@ -278,8 +278,7 @@ document.getElementById("pwdInput").addEventListener("keydown",function(e){if(e.
 function updateNavHeight(){
   var nav=document.getElementById("stickyNav");
   var area=document.getElementById("contentArea");
-  if(nav && area){
-    area.style.paddingTop=nav.offsetHeight+"px";
+  if(nav&&area) area.style.paddingTop=nav.getBoundingClientRect().height+"px";
   }
 }
 window.addEventListener("resize",updateNavHeight);
