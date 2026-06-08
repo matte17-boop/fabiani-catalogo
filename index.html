@@ -144,9 +144,10 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
   .mobile-filter-bar{display:flex;}
   .toolbar{padding:8px 16px;}
   .search-input{width:110px;}
-  .cols-switcher{display:none;}
+  .cols-switcher{display:flex;}
+  .cols-label{display:none;}
   .header-right{display:none;}
-  .products-grid{margin:0;grid-template-columns:repeat(2,1fr) !important;border-left:none;border-top:none;}
+  .products-grid{margin:0;grid-template-columns:repeat(2,1fr);border-left:none;border-top:none;}
   .lb-box{flex-direction:column;max-height:92vh;}
   .lb-img{width:100%;min-width:unset;height:220px;}
   .cat-footer{padding:16px;}
@@ -537,7 +538,7 @@ function render(){
     if(curMacro&&(p.macro||"")!==curMacro)return false;
     if(curMicro&&(p.micro||"")!==curMicro)return false;
     if(curTipo&&!matchTipo(p.tipo,curTipo))return false;
-    if(curSearch){var q=curSearch;if((p.materiale||"").toLowerCase().indexOf(q)<0&&(p.brand||"").toLowerCase().indexOf(q)<0&&(p.sku||"").toLowerCase().indexOf(q)<0&&(p.pietra||"").toLowerCase().indexOf(q)<0)return false;}
+    if(curSearch){var q=curSearch;if((p.materiale||"").toLowerCase().indexOf(q)<0&&(p.brand||"").toLowerCase().indexOf(q)<0&&(p.pietra||"").toLowerCase().indexOf(q)<0&&(p.macro||"").toLowerCase().indexOf(q)<0&&(p.micro||"").toLowerCase().indexOf(q)<0&&(p.tipo||"").toLowerCase().indexOf(q)<0)return false;}
     return true;
   });
   document.getElementById("countLabel").textContent=f.length+" prodott"+(f.length===1?"o":"i");
