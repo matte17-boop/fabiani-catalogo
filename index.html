@@ -17,7 +17,6 @@
   --rosa-dark:#C4958A;--rosa-accent:#B07268;
   --gray-light:#F7F4F2;--gray-mid:#C8C0BC;--gray-dark:#8A8280;
   --border:#E8E0DC;
-  --nav-h:170px;
 }
 html,body{height:100%;-webkit-text-size-adjust:100%;}
 body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(--black);margin:0;}
@@ -125,7 +124,7 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 .cols-btn.active{background:var(--black);color:var(--white);border-color:var(--black);}
 
 /* CONTENT AREA — padding top per nav fisso */
-.content-area{padding-top:var(--nav-h);}
+.content-area{padding-top:0;}
 
 /* GRID */
 .products-grid{display:grid;grid-template-columns:repeat(5,1fr);border-left:1px solid var(--border);border-top:1px solid var(--border);margin:28px 40px;}
@@ -177,7 +176,7 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 
 /* ── MOBILE ── */
 @media(max-width:768px){
-  :root{--nav-h:158px;}
+
   .top-bar,.cat-header,.toolbar,.cat-footer{padding-left:16px;padding-right:16px;}
   .nav-desktop{display:none;}
   .hamburger{display:none;}
@@ -187,7 +186,7 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
   .cols-switcher{display:none;}
   .lb-box{flex-direction:column;max-height:92vh;}
   .lb-img{width:100%;min-width:unset;height:220px;}
-  .content-area{padding-top:var(--nav-h);}
+  .content-area{padding-top:0;}
   .header-right{display:none;}
   .cols-label{display:none;}
   .toolbar{padding:8px 16px;}
@@ -195,7 +194,7 @@ body{font-family:'TenorSans','Georgia',serif;background:var(--white);color:var(-
 }
 @media(max-width:400px){
   .top-bar{display:none;}
-  :root{--nav-h:124px;}
+
 }
 </style>
 </head>
@@ -280,17 +279,24 @@ function updateNavHeight(){
   var nav=document.getElementById("stickyNav");
   var area=document.getElementById("contentArea");
   if(nav && area){
-    var h=nav.getBoundingClientRect().height;
-    area.style.paddingTop=h+"px";
+    area.style.paddingTop=nav.offsetHeight+"px";
   }
 }
-window.addEventListener("resize",updateNavHeight);
-// Run multiple times to catch layout shifts
-document.addEventListener("DOMContentLoaded",function(){
-  updateNavHeight();
-  setTimeout(updateNavHeight,100);
-  setTimeout(updateNavHeight,300);
-});
+// ResizeObserver: fires whenever nav changes size
+if(window.ResizeObserver){
+  var _ro=new ResizeObserver(function(){updateNavHeight();});
+  document.addEventListener("DOMContentLoaded",function(){
+    var nav=document.getElementById("stickyNav");
+    if(nav) _ro.observe(nav);
+    updateNavHeight();
+  });
+} else {
+  window.addEventListener("resize",updateNavHeight);
+  document.addEventListener("DOMContentLoaded",function(){
+    updateNavHeight();
+    setTimeout(updateNavHeight,200);
+  });
+}
 
 function normalizeHeader(h){
   h=h.trim().replace(/^"|"$/g,"").toLowerCase();
