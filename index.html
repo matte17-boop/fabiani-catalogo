@@ -282,16 +282,18 @@ function updateNavHeight(){
     area.style.paddingTop=nav.offsetHeight+"px";
   }
 }
-// ResizeObserver: fires whenever nav changes size
+window.addEventListener("resize",updateNavHeight);
 if(window.ResizeObserver){
-  var _ro=new ResizeObserver(function(){updateNavHeight();});
+  var _ro=new ResizeObserver(updateNavHeight);
   document.addEventListener("DOMContentLoaded",function(){
     var nav=document.getElementById("stickyNav");
     if(nav) _ro.observe(nav);
     updateNavHeight();
+    setTimeout(updateNavHeight,50);
+    setTimeout(updateNavHeight,200);
   });
 } else {
-  window.addEventListener("resize",updateNavHeight);
+  window.addEventListener("load",updateNavHeight);
   document.addEventListener("DOMContentLoaded",function(){
     updateNavHeight();
     setTimeout(updateNavHeight,200);
